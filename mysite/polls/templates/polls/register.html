@@ -1,0 +1,18 @@
+{% extends 'polls/index.html' %}
+{% block title %}
+REGISTER
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+	<form method="POST" class="form-group">
+		{% csrf_token %}
+		{{ form|crispy }}<br>
+		<button type="submit" class="btn btn-success">Register</button>
+		<p>You're not a new user? <a href="{% url 'login' %}">Click here to log in</a></p>
+
+	</form>
+</div>
+{% endblock %}

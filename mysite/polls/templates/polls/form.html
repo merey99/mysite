@@ -1,0 +1,30 @@
+{% extends 'polls/index.html' %}
+{% block title %}
+CREATE
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+	<div class="d-flex justify-content-center">
+		<form method="post">
+			<div style="border: 2px solid lightblue; padding: 40px 70px 70px 70px;">
+				<div class="d-flex justify-content-center">
+					<h1 style="color:darkblue; margin-left: 20px;">Create a new task for today</h1>
+				</div><br><br>
+				<div class="form-group">
+					<div class="d-flex justify-content-center" style="margin:10px">
+						{% csrf_token %}
+						{{ form.as_p }}
+					</div>
+				</div>
+				<br>
+				<input type="submit" value="Save task" class="btn btn-success"
+					style="margin-left: 20px; margin-bottom: 15px;">
+				<a href="{% url 'tasks' %}" style="text-decoration: none;"><input style="margin-left: 20px;" type="submit"
+						value="Go back" class="btn btn-outline-danger"></a>
+			</div>
+		</form>
+	</div>
+	{% endblock %}

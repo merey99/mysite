@@ -1,0 +1,32 @@
+{% extends 'polls/index.html' %}
+
+{% block title %}
+Main page
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container" style="margin-left: 100px;"">
+	<div id=" container">
+	<h1 align="center">My plans for today</h1><a href="{% url 'tasks-create'%}"><i class="fa fa-plus"></i></a>
+	<div class="row d-flex justify-content-center container">
+		{% for i in tasks %}
+
+		<ul>
+			<li><span><a style="text-decoration: none; color:white" href="{% url 'tasks-delete' i.id %}"><i
+							class="fa fa-trash"></i></a></span>{{ i.title }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+					href="{% url 'tasks-update' i.id %}" style="text-decoration: none; color:#2980b9;"><i
+						class="fa fa-edit"></i></a></li>
+		</ul>
+		{% empty %}
+
+	</div>
+</div>
+<h2>No tasks</h2>
+<a href="{% url 'tasks-create' %}" style="text-decoration: none;"><button class="btn btn-success">+</button></a>
+{% endfor %}
+
+</div>
+
+{% endblock %}
